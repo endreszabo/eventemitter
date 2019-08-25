@@ -2,10 +2,23 @@ interface ListenerFn {
     (...args: any[]): void;
 }
 /**
+ * The priority of an event. The lower the value the high the priority.
+ */
+declare enum Priority {
+    HIGHEST = -1000,
+    HIGHER = -100,
+    HIGH = -10,
+    NORMAL = 0,
+    LOW = 10,
+    LOWER = 100,
+    LOWEST = 1000
+}
+/**
  * The sahnee event emitter class. You can either instatiate it directly or subclass it.
  */
 declare class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
     private _events;
+    static Priority: typeof Priority;
     constructor();
     /**
      * Return an array listing the events for which the emitter has registered

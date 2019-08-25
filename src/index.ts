@@ -18,7 +18,8 @@ interface ListenerFn {
  */
 const getAllOwn = <T>(e: { [key in string | symbol]: T[] }) => {
   const names = Object.getOwnPropertyNames(e);
-  const symbols = Object.getOwnPropertySymbols(e);
+  // Feature detect symbols
+  const symbols = "getOwnPropertySymbols" in Object ? (Object as any).getOwnPropertySymbols(e) : [];
   const res: (string | symbol)[] = [];
   return res.concat(symbols).concat(names);
 }
@@ -42,11 +43,9 @@ enum Priority {
 class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
   private _events: { [key in string | symbol]: Listener[] } = {};
 
+  static Priority = Priority;
+
   constructor() {
-    console.log("Event emitter says", this)
-    /*if(!(this instanceof SahneeEventEmitter)) {
-      return new SahneeEventEmitter<EventTypes>();
-    }*/
   }
 
   /**

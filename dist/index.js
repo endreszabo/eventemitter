@@ -28,10 +28,6 @@ var Priority;
 var SahneeEventEmitter = /** @class */ (function () {
     function SahneeEventEmitter() {
         this._events = {};
-        console.log("Event emitter says", this);
-        /*if(!(this instanceof SahneeEventEmitter)) {
-          return new SahneeEventEmitter<EventTypes>();
-        }*/
     }
     /**
      * Return an array listing the events for which the emitter has registered
@@ -140,6 +136,7 @@ var SahneeEventEmitter = /** @class */ (function () {
     SahneeEventEmitter.prototype.sort = function (events) {
         events.sort(function (a, b) { return a.priority - b.priority; });
     };
+    SahneeEventEmitter.Priority = Priority;
     return SahneeEventEmitter;
 }());
 module.exports = SahneeEventEmitter;
