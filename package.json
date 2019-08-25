@@ -1,0 +1,24 @@
+{
+  "name": "sahnee-eventemitter",
+  "version": "1.0.0",
+  "description": "Yet another eventemitter",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sahnee-DE/eventemitter.git"
+  },
+  "contributors": [
+    {
+      "name": "PatrickSachs",
+      "url": "https://patrick-sachs.dev"
+    }
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Sahnee.dev",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.3"
+  }
+}
