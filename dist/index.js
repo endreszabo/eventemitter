@@ -5,7 +5,8 @@
  */
 var getAllOwn = function (e) {
     var names = Object.getOwnPropertyNames(e);
-    var symbols = Object.getOwnPropertySymbols(e);
+    // Feature detect symbols
+    var symbols = "getOwnPropertySymbols" in Object ? Object.getOwnPropertySymbols(e) : [];
     var res = [];
     return res.concat(symbols).concat(names);
 };
