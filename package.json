@@ -20,12 +20,12 @@
   "author": "Sahnee.dev",
   "license": "MIT",
   "devDependencies": {
-    "assume": "^2.2.0",
-    "browserify": "^16.5.0",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1",
-    "sauce-browsers": "^2.0.0",
-    "sauce-test": "^1.3.3",
-    "typescript": "^4.2.3"
+    "assume": "2.3.0",
+    "browserify": "16.5.2",
+    "mocha": "6.2.3",
+    "nyc": "14.1.1",
+    "sauce-browsers": "2.0.0",
+    "sauce-test": "1.3.3",
+    "typescript": "4.2.3"
   }
 }
