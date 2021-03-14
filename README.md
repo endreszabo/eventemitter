@@ -7,6 +7,7 @@ Yet another EventEmitter
 * Classic subscription based event emitter class
 * Observer pattern
 * Written in TypeScript
+* Fully unit tested
 
 ## EventEmitter
 
