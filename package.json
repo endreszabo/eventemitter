@@ -18,7 +18,7 @@
     "test": "nyc --reporter=html --reporter=text mocha test/test.js"
   },
   "author": "Sahnee.dev",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "assume": "^2.2.0",
     "browserify": "^16.5.0",
