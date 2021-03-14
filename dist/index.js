@@ -46,7 +46,7 @@ var SahneeEventEmitter = /** @class */ (function () {
         get: function () {
             return getAllOwn(this._events).length;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     /**

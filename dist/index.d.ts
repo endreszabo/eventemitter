@@ -40,7 +40,7 @@ declare class SahneeEventEmitter<EventTypes extends string | symbol = string | s
     /**
      * Only exists for compatibility with eventemitter3 unit tests.
      */
-    protected readonly _eventsCount: number;
+    protected get _eventsCount(): number;
     /**
      * Return an array listing the events for which the emitter has registered
      * listeners.
