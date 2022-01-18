@@ -14,13 +14,13 @@ declare enum Priority {
     LOWEST = 1000
 }
 /**
- * The sahnee event emitter class. You can either instatiate it directly or subclass it.
+ * The event emitter class. You can either instatiate it directly or subclass it.
  */
-declare class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
+declare class EventEmitter<EventTypes extends string | symbol = string | symbol> {
     /**
      * Allow `EventEmitter` to be imported as module namespace.
      */
-    static EventEmitter: typeof SahneeEventEmitter;
+    static EventEmitter: typeof EventEmitter;
     /**
      * The priority of an event. The lower the value the high the priority.
      */
@@ -69,7 +69,7 @@ declare class SahneeEventEmitter<EventTypes extends string | symbol = string | s
     /**
      * Add a listener for a given event.
      */
-    addListener(event: EventTypes, fn: ListenerFn, context?: any, once?: boolean, priority?: number): this;
+    addEventListener(event: EventTypes, fn: ListenerFn, context?: any, once?: boolean, priority?: number): this;
     /**
      * Remove the listeners of a given event.
      */
@@ -77,7 +77,7 @@ declare class SahneeEventEmitter<EventTypes extends string | symbol = string | s
     /**
      * Remove the listeners of a given event.
      */
-    removeListener(event: EventTypes, fn?: ListenerFn, context?: any, once?: boolean, priority?: number): this;
+    removeEventListener(event: EventTypes, fn?: ListenerFn, context?: any, once?: boolean, priority?: number): this;
     /**
      * Remove all listeners, or those of the specified event.
      */
@@ -98,5 +98,5 @@ declare class SahneeEventEmitter<EventTypes extends string | symbol = string | s
      */
     private sort;
 }
-export = SahneeEventEmitter;
+export = EventEmitter;
 //# sourceMappingURL=index.d.ts.map

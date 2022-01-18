@@ -41,13 +41,13 @@ enum Priority {
 }
 
 /**
- * The sahnee event emitter class. You can either instatiate it directly or subclass it.
+ * The event emitter class. You can either instatiate it directly or subclass it.
  */
-class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
+class EventEmitter<EventTypes extends string | symbol = string | symbol> {
   /**
    * Allow `EventEmitter` to be imported as module namespace.
    */
-  public static EventEmitter = SahneeEventEmitter;
+  public static EventEmitter = EventEmitter;
 
   /**
    * The priority of an event. The lower the value the high the priority.
@@ -67,7 +67,7 @@ class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
   /**
    * The prefix used by this emitter.
    */
-  public prefix: string | false = SahneeEventEmitter.prefixed;
+  public prefix: string | false = EventEmitter.prefixed;
 
   /**
    * Only exists for compatibility with eventemitter3 unit tests.
@@ -129,20 +129,20 @@ class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
    * Add a listener for a given event.
    */
   public on(event: EventTypes, fn: ListenerFn, context?: any, priority = 0) {
-    return this.addListener(event, fn, context, false, priority);
+    return this.addEventListener(event, fn, context, false, priority);
   }
 
   /**
    * Add a one-time listener for a given event.
    */
   public once(event: EventTypes, fn: ListenerFn, context?: any, priority = 0) {
-    return this.addListener(event, fn, context, true, priority);
+    return this.addEventListener(event, fn, context, true, priority);
   }
 
   /**
    * Add a listener for a given event.
    */
-  public addListener(event: EventTypes, fn: ListenerFn, context?: any, once?: boolean, priority = 0) {
+  public addEventListener(event: EventTypes, fn: ListenerFn, context?: any, once?: boolean, priority = 0) {
     if (typeof fn !== "function") {
       throw new TypeError('The listener must be a function');
     }
@@ -158,13 +158,13 @@ class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
    * Remove the listeners of a given event.
    */
   public off(event: EventTypes, fn: ListenerFn, context?: any, once?: boolean) {
-    this.removeListener(event, fn, context, once);
+    this.removeEventListener(event, fn, context, once);
   }
 
   /**
    * Remove the listeners of a given event.
    */
-  public removeListener(event: EventTypes, fn?: ListenerFn, context?: any, once?: boolean, priority?: number) {
+  public removeEventListener(event: EventTypes, fn?: ListenerFn, context?: any, once?: boolean, priority?: number) {
     if (!fn) {
       this.removeAllListeners(event)
     } else {
@@ -233,4 +233,4 @@ class SahneeEventEmitter<EventTypes extends string | symbol = string | symbol> {
   }
 }
 
-export = SahneeEventEmitter;
+export = EventEmitter;

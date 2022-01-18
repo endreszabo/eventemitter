@@ -26,10 +26,10 @@ var Priority;
     Priority[Priority["LOWEST"] = 1000] = "LOWEST";
 })(Priority || (Priority = {}));
 /**
- * The sahnee event emitter class. You can either instatiate it directly or subclass it.
+ * The event emitter class. You can either instatiate it directly or subclass it.
  */
-var SahneeEventEmitter = /** @class */ (function () {
-    function SahneeEventEmitter() {
+var EventEmitter = /** @class */ (function () {
+    function EventEmitter() {
         /**
          * The actual event storage.
          */
@@ -37,9 +37,9 @@ var SahneeEventEmitter = /** @class */ (function () {
         /**
          * The prefix used by this emitter.
          */
-        this.prefix = SahneeEventEmitter.prefixed;
+        this.prefix = EventEmitter.prefixed;
     }
-    Object.defineProperty(SahneeEventEmitter.prototype, "_eventsCount", {
+    Object.defineProperty(EventEmitter.prototype, "_eventsCount", {
         /**
          * Only exists for compatibility with eventemitter3 unit tests.
          */
@@ -53,14 +53,14 @@ var SahneeEventEmitter = /** @class */ (function () {
      * Return an array listing the events for which the emitter has registered
      * listeners.
      */
-    SahneeEventEmitter.prototype.eventNames = function () {
+    EventEmitter.prototype.eventNames = function () {
         var _this = this;
         return getAllOwn(this._events).map(function (e) { return _this.unPrefix(e); });
     };
     /**
      * Return the listeners registered for a given event.
      */
-    SahneeEventEmitter.prototype.listeners = function (event) {
+    EventEmitter.prototype.listeners = function (event) {
         event = this.doPrefix(event);
         var events = this._events[event];
         return events ? events.map(function (e) { return e.fn; }) : [];
@@ -68,7 +68,7 @@ var SahneeEventEmitter = /** @class */ (function () {
     /**
      * Return the number of listeners listening to a given event.
      */
-    SahneeEventEmitter.prototype.listenerCount = function (event) {
+    EventEmitter.prototype.listenerCount = function (event) {
         event = this.doPrefix(event);
         var events = this._events[event];
         return events ? events.length : 0;
@@ -76,7 +76,7 @@ var SahneeEventEmitter = /** @class */ (function () {
     /**
      * Calls each of the listeners registered for a given event.
      */
-    SahneeEventEmitter.prototype.emit = function (event) {
+    EventEmitter.prototype.emit = function (event) {
         var args = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             args[_i - 1] = arguments[_i];
@@ -102,21 +102,21 @@ var SahneeEventEmitter = /** @class */ (function () {
     /**
      * Add a listener for a given event.
      */
-    SahneeEventEmitter.prototype.on = function (event, fn, context, priority) {
+    EventEmitter.prototype.on = function (event, fn, context, priority) {
         if (priority === void 0) { priority = 0; }
-        return this.addListener(event, fn, context, false, priority);
+        return this.addEventListener(event, fn, context, false, priority);
     };
     /**
      * Add a one-time listener for a given event.
      */
-    SahneeEventEmitter.prototype.once = function (event, fn, context, priority) {
+    EventEmitter.prototype.once = function (event, fn, context, priority) {
         if (priority === void 0) { priority = 0; }
-        return this.addListener(event, fn, context, true, priority);
+        return this.addEventListener(event, fn, context, true, priority);
     };
     /**
      * Add a listener for a given event.
      */
-    SahneeEventEmitter.prototype.addListener = function (event, fn, context, once, priority) {
+    EventEmitter.prototype.addEventListener = function (event, fn, context, once, priority) {
         if (priority === void 0) { priority = 0; }
         if (typeof fn !== "function") {
             throw new TypeError('The listener must be a function');
@@ -131,13 +131,13 @@ var SahneeEventEmitter = /** @class */ (function () {
     /**
      * Remove the listeners of a given event.
      */
-    SahneeEventEmitter.prototype.off = function (event, fn, context, once) {
-        this.removeListener(event, fn, context, once);
+    EventEmitter.prototype.off = function (event, fn, context, once) {
+        this.removeEventListener(event, fn, context, once);
     };
     /**
      * Remove the listeners of a given event.
      */
-    SahneeEventEmitter.prototype.removeListener = function (event, fn, context, once, priority) {
+    EventEmitter.prototype.removeEventListener = function (event, fn, context, once, priority) {
         if (!fn) {
             this.removeAllListeners(event);
         }
@@ -165,7 +165,7 @@ var SahneeEventEmitter = /** @class */ (function () {
     /**
      * Remove all listeners, or those of the specified event.
      */
-    SahneeEventEmitter.prototype.removeAllListeners = function (event) {
+    EventEmitter.prototype.removeAllListeners = function (event) {
         if (event) {
             event = this.doPrefix(event);
             delete this._events[event];
@@ -179,7 +179,7 @@ var SahneeEventEmitter = /** @class */ (function () {
      * Adds the prefix to the given event name.
      * @param name The event name.
      */
-    SahneeEventEmitter.prototype.doPrefix = function (name) {
+    EventEmitter.prototype.doPrefix = function (name) {
         if (typeof name === "string" && this.prefix) {
             return this.prefix + name;
         }
@@ -189,7 +189,7 @@ var SahneeEventEmitter = /** @class */ (function () {
      * Removes the prefix from the given event name.
      * @param name The event name.
      */
-    SahneeEventEmitter.prototype.unPrefix = function (name) {
+    EventEmitter.prototype.unPrefix = function (name) {
         if (typeof name === "string" && this.prefix) {
             return name.slice(this.prefix.length);
         }
@@ -199,21 +199,21 @@ var SahneeEventEmitter = /** @class */ (function () {
      * Sorts the given listener list.
      * @param events The list.
      */
-    SahneeEventEmitter.prototype.sort = function (events) {
+    EventEmitter.prototype.sort = function (events) {
         events.sort(function (a, b) { return a.priority - b.priority; });
     };
     /**
      * Allow `EventEmitter` to be imported as module namespace.
      */
-    SahneeEventEmitter.EventEmitter = SahneeEventEmitter;
+    EventEmitter.EventEmitter = EventEmitter;
     /**
      * The priority of an event. The lower the value the high the priority.
      */
-    SahneeEventEmitter.Priority = Priority;
+    EventEmitter.Priority = Priority;
     /**
      * Expose the prefix.
      */
-    SahneeEventEmitter.prefixed = PREFIX;
-    return SahneeEventEmitter;
+    EventEmitter.prefixed = PREFIX;
+    return EventEmitter;
 }());
-module.exports = SahneeEventEmitter;
+module.exports = EventEmitter;
