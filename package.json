@@ -21,7 +21,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "assume": "2.3.0",
-    "mocha": "8.3.2",
+    "mocha": "9.1.2",
     "nyc": "15.1.0",
     "sauce-browsers": "2.0.0",
     "typescript": "4.5.4"
