@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+* Nothing so far
+
+## 2.0.0
+
 * Renamed `SahneeEventEmitter` to `EventEmitter`
 * Renamed `addListener` to `addEventListener` (and the remove functions) to bring it more in line with JS `EventTarget`
 
