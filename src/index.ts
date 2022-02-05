@@ -9,7 +9,7 @@ interface Listener {
 }
 
 interface ListenerFn {
-  (...args: any[]): void;
+  (...args: any[]): boolean;
 }
 
 const PREFIX = "~";
@@ -117,7 +117,8 @@ class EventEmitter<EventTypes extends string | symbol = string | symbol> {
         events.splice(i, 1)
         i--;
       }
-      currentEvent.fn.apply(currentEvent.context, args);
+      if (currentEvent.fn.apply(currentEvent.context, args) === false)
+		  break;
     }
     if (events.length === 0) {
       delete this._events[event];

@@ -5,6 +5,7 @@ Yet another EventEmitter
 ## Features
 
 * Classic subscription based event emitter class
+* Cancellable emitter
 * Observer pattern
 * Written in TypeScript
 * Fully unit tested
