@@ -1,4 +1,4 @@
-export declare type Observer<T> = (value: T) => void;
+export type Observer<T> = (value: T) => void;
 /**
  * An interface to implement obserables on.
  */

@@ -1,5 +1,5 @@
 interface ListenerFn {
-    (...args: any[]): void;
+    (...args: any[]): boolean;
 }
 /**
  * The priority of an event. The lower the value the high the priority.

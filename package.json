@@ -1,6 +1,6 @@
 {
-  "name": "@sahnee/eventemitter",
-  "version": "2.0.0",
+  "name": "@y7/eventemitter",
+  "version": "2.0.2",
   "description": "Yet another eventemitter",
   "main": "./dist/index.js",
   "repository": {
@@ -20,6 +20,7 @@
   "author": "Sahnee.dev",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/node": "^18.13.0",
     "assume": "2.3.0",
     "mocha": "8.3.2",
     "nyc": "15.1.0",

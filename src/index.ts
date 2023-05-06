@@ -107,6 +107,7 @@ class EventEmitter<EventTypes extends string | symbol = string | symbol> {
    */
   public emit(event: EventTypes, ...args: any[]): boolean {
     event = this.doPrefix(event);
+	let rv = true
     const events = this._events[event];
     if (!events || !events.length) {
       return false;
@@ -117,13 +118,15 @@ class EventEmitter<EventTypes extends string | symbol = string | symbol> {
         events.splice(i, 1)
         i--;
       }
-      if (currentEvent.fn.apply(currentEvent.context, args) === false)
+      if (currentEvent.fn.apply(currentEvent.context, args) === false) {
+		  rv = false
 		  break;
+	  }
     }
     if (events.length === 0) {
       delete this._events[event];
     }
-    return true;
+    return rv;
   }
 
   /**

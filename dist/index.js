@@ -82,6 +82,7 @@ var EventEmitter = /** @class */ (function () {
             args[_i - 1] = arguments[_i];
         }
         event = this.doPrefix(event);
+        var rv = true;
         var events = this._events[event];
         if (!events || !events.length) {
             return false;
@@ -92,12 +93,15 @@ var EventEmitter = /** @class */ (function () {
                 events.splice(i, 1);
                 i--;
             }
-            currentEvent.fn.apply(currentEvent.context, args);
+            if (currentEvent.fn.apply(currentEvent.context, args) === false) {
+                rv = false;
+                break;
+            }
         }
         if (events.length === 0) {
             delete this._events[event];
         }
-        return true;
+        return rv;
     };
     /**
      * Add a listener for a given event.
