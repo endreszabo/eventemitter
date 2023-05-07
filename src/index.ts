@@ -110,7 +110,7 @@ class EventEmitter<EventTypes extends string | symbol = string | symbol> {
 	let rv = true
     const events = this._events[event];
     if (!events || !events.length) {
-      return false;
+      return true;
     }
     for (let i = 0; i < events.length; i++) {
       const currentEvent = events[i];

@@ -85,7 +85,7 @@ var EventEmitter = /** @class */ (function () {
         var rv = true;
         var events = this._events[event];
         if (!events || !events.length) {
-            return false;
+            return true;
         }
         for (var i = 0; i < events.length; i++) {
             var currentEvent = events[i];
