@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventEmitter = void 0;
 var PREFIX = "~";
 /**
  * Gets all own properties and symbols.
@@ -220,4 +222,5 @@ var EventEmitter = /** @class */ (function () {
     EventEmitter.prefixed = PREFIX;
     return EventEmitter;
 }());
-module.exports = EventEmitter;
+exports.EventEmitter = EventEmitter;
+//export = EventEmitter;

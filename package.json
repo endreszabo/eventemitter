@@ -1,13 +1,17 @@
 {
-  "name": "@y7/eventemitter",
-  "version": "2.0.3",
-  "description": "Yet another eventemitter",
+  "name": "@y7hu/eventemitter",
+  "version": "2.0.4",
+  "description": "Cancellable eventemitter",
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sahnee-DE/eventemitter.git"
+    "url": "https://github.com/endreszabo/eventemitter.git"
   },
   "contributors": [
+    {
+      "name": "Endre Szabo",
+      "url": "https://end.re"
+    },
     {
       "name": "PatrickSachs",
       "url": "https://patrick-sachs.dev"
@@ -27,5 +31,6 @@
     "sauce-browsers": "2.0.0",
     "typescript": "4.5.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

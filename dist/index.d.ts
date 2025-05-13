@@ -1,4 +1,4 @@
-interface ListenerFn {
+export interface ListenerFn {
     (...args: any[]): boolean;
 }
 /**
@@ -16,7 +16,7 @@ declare enum Priority {
 /**
  * The event emitter class. You can either instatiate it directly or subclass it.
  */
-declare class EventEmitter<EventTypes extends string | symbol = string | symbol> {
+export declare class EventEmitter<EventTypes extends string | symbol = string | symbol> {
     /**
      * Allow `EventEmitter` to be imported as module namespace.
      */
@@ -98,5 +98,5 @@ declare class EventEmitter<EventTypes extends string | symbol = string | symbol>
      */
     private sort;
 }
-export = EventEmitter;
+export {};
 //# sourceMappingURL=index.d.ts.map

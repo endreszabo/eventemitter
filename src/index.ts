@@ -8,7 +8,7 @@ interface Listener {
   priority: number;
 }
 
-interface ListenerFn {
+export interface ListenerFn {
   (...args: any[]): boolean;
 }
 
@@ -43,7 +43,7 @@ enum Priority {
 /**
  * The event emitter class. You can either instatiate it directly or subclass it.
  */
-class EventEmitter<EventTypes extends string | symbol = string | symbol> {
+export class EventEmitter<EventTypes extends string | symbol = string | symbol> {
   /**
    * Allow `EventEmitter` to be imported as module namespace.
    */
@@ -237,4 +237,4 @@ class EventEmitter<EventTypes extends string | symbol = string | symbol> {
   }
 }
 
-export = EventEmitter;
+//export = EventEmitter;
